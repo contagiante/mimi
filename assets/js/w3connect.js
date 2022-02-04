@@ -29,9 +29,10 @@ async function init() {
     web3Modal = new Web3Modal({
         cacheProvider: false, // optional
         providerOptions, // required
-        disableInjectedProvider: false, // optional. For MetaMask / Brave / Opera.
+        disableInjectedProvider: false,
+         // optional. For MetaMask / Brave / Opera.
     });
-
+    
     const abiResponse = await fetch('./assets/js/contracts/tokenAbi.json');
     abi = await abiResponse.json();
 
