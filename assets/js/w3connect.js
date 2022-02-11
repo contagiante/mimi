@@ -2,6 +2,10 @@
 
 const mimiTokenContract = "0x284748b6C0c1Ec75C73285f4557fE8F51F800480".toLowerCase();
 
+const BUSDAdress = "0x959b88966fC5B261dF8359961357d34F4ee27b4a".toLowerCase();
+const WAVAXAddress = "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7".toLowerCase();
+const DexAddress = "0x60aE616a2155Ee3d9A68541Ba4544862310933d4".toLowerCase();
+const distributor = "0xc3940a6a418b6858431185356cbb45d6a99655cd".toLowerCase();
 
 const Web3Modal = window.Web3Modal.default;
 const WalletConnectProvider = window.WalletConnectProvider.default;
@@ -26,14 +30,14 @@ async function init() {
         },
     };
 
-    
-   
-      
-     web3Modal = new Web3Modal({
+
+
+
+    web3Modal = new Web3Modal({
         network: 'avalanche', // optional
         cacheProvider: true, // optional
         providerOptions, // required
-      });
+    });
 
     const abiResponse = await fetch('./assets/js/contracts/tokenAbi.json');
     abi = await abiResponse.json();
@@ -52,7 +56,6 @@ async function fetchAccountData() {
     // Get connected chain id from Ethereum node
     const chainId = await web3.eth.getChainId();
     // Load chain information over an HTTP API
-    document.querySelector("#network-name").textContent = "Avalanche C-Chain";
 
     // Get list of accounts of the connected wallet
     const accounts = await web3.eth.getAccounts();
@@ -162,7 +165,6 @@ async function onDisconnect() {
     document.querySelector("#prepare").style.display = "block";
     document.querySelector("#connected").style.display = "none";
 }
-
 
 
 async function claim(provider) {
